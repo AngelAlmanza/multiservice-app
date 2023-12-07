@@ -9,12 +9,13 @@ import HeaderView from './sources/components/HeaderView';
 import HomePay from './sources/screens/HomePay';
 // import LoginView from './sources/screens/LogIn';
 import MyProfile from './sources/screens/MyProfile'
+import EditProfile from './sources/screens/EditProfile'
 
 export default function App() {
   return (
     <SafeAreaView style={s.container}>
       <HeaderView />
-      <MyProfile/>
+      <EditProfile/>
       {/* <LoginView /> */}
     </SafeAreaView>
 
