@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -16,6 +17,9 @@ type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
 export const SignUpScreen = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const navigator = useNavigation<ScreenNavigationProps>();
 
@@ -25,6 +29,9 @@ export const SignUpScreen = () => {
     } else {
       setEmail('');
       setPassword('');
+      setName('');
+      setPhone('');
+      setLastName('');
       navigator.navigate('HomeScreen');
     }
   };
@@ -75,6 +82,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#007AFF',
     borderRadius: 5,
+    marginTop: 20,
     padding: 10,
     width: '80%',
   },
