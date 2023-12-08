@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -15,6 +16,9 @@ type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
 export const SignUpScreen = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const navigator = useNavigation<ScreenNavigationProps>();
 
@@ -24,16 +28,20 @@ export const SignUpScreen = () => {
     } else {
       setEmail('');
       setPassword('');
+      setName('');
+      setPhone('');
+      setLastName('');
       navigator.navigate('HomeScreen');
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>tittle</Text>
-      <Input text="Name" value={email} setValue={setEmail} />
-      <Input text="Last name" value={email} setValue={setEmail} />
-      <Input text="Phone" value={email} setValue={setEmail} />
+      <Image source={require('../../assets/logo.png')} style={styles.logoImg} />
+      <Text style={styles.title}>Sign Up!</Text>
+      <Input text="Name" value={name} setValue={setName} />
+      <Input text="Last name" value={lastName} setValue={setLastName} />
+      <Input text="Phone" value={phone} setValue={setPhone} />
       <Input text="Email" value={email} setValue={setEmail} />
       <Input text="Password" value={password} setValue={setPassword} />
       <Input
@@ -65,6 +73,12 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 30,
+  },
+  logoImg: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -73,6 +87,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#007AFF',
     borderRadius: 5,
+    marginTop: 20,
     padding: 10,
     width: '80%',
   },

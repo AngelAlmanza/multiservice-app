@@ -30,8 +30,8 @@ export const MainStack = () => {
         },
       }}
     >
-      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
       <Stack.Screen name="MyProfileScreen" component={MyProfileScreen} />

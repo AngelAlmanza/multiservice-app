@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 import { Input } from '../components/Input';
 
@@ -22,7 +23,8 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>tittle</Text>
+      <Image source={require('../../assets/logo.png')} style={styles.logoImg} />
+      <Text style={styles.title}>Login</Text>
       <Input text="Email" value={email} setValue={setEmail} />
       <Input text="Password" value={password} setValue={setPassword} />
 
@@ -50,6 +52,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+  },
+  logoImg: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
