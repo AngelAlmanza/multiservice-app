@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '../navigation/MainStack';
 import { Input } from '../components/Input';
+import { IconBrandTailwind } from 'tabler-icons-react-native';
 
 type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
@@ -30,7 +31,10 @@ export const SignUpScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>tittle</Text>
+      <Text style={styles.title}>
+        <IconBrandTailwind size={90} />
+      </Text>
+
       <Input text="Name" value={email} setValue={setEmail} />
       <Input text="Last name" value={email} setValue={setEmail} />
       <Input text="Phone" value={email} setValue={setEmail} />
@@ -43,18 +47,16 @@ export const SignUpScreen = () => {
       />
       <TouchableOpacity
         style={styles.button}
-        // onPress={() => navigation.navigate('SignUp')}
         onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
-        // onPress={() => navigation.navigate('SignUp')}
         onPress={() => navigator.navigate('LoginScreen')}
       >
         <Text style={styles.link}>do you have an account? Login</Text>
       </TouchableOpacity>
-      {/* + */}
     </View>
   );
 };
@@ -62,15 +64,15 @@ export const SignUpScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
   title: {
-    fontSize: 24,
     marginBottom: 20,
   },
   button: {
+    marginTop: 20,
     backgroundColor: '#007AFF',
     borderRadius: 5,
     padding: 10,

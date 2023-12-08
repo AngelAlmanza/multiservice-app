@@ -7,22 +7,43 @@ import {
   Alert,
 } from 'react-native';
 import { Input } from '../components/Input';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList } from '../navigation/MainStack';
+import { IconBrandTailwind } from 'tabler-icons-react-native';
+import { loginProps } from '../../interface/user';
+import multiservceApi from '../api/multiservice-api';
+
+type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
+
 
 export const LoginScreen = () => {
+  const navigator = useNavigation<ScreenNavigationProps>();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleLogin = () => {
-    if (email === '' || password === '') {
-      Alert.alert('Error');
-    } else {
-      setEmail('');
-      setPassword('');
+  // const [token, setToken] = useState(null);
+
+  const handleLogin = async () => {
+    try {
+      const response = await multiservceApi.post<loginProps>('/clients/login', {
+        email: email,
+        password: password,
+      });
+      Alert.alert('calando ');
+
+    } catch (error) {
+
     }
+    // multiservceApi
   };
+
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>tittle</Text>
+      <Text style={styles.title}>
+        <IconBrandTailwind size={100} />
+      </Text>
       <Input text="Email" value={email} setValue={setEmail} />
       <Input text="Password" value={password} setValue={setPassword} />
 
@@ -34,11 +55,13 @@ export const LoginScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        // onPress={() => navigation.navigate('SignUp')}
-        onPress={() => Alert.alert('Hello')}
+        onPress={() => navigator.navigate('SignUpScreen')}
       >
         <Text style={styles.link}>You don't have an account? Sign up</Text>
       </TouchableOpacity>
+      <Text>
+        {email}
+      </Text>
     </View>
   );
 };
@@ -46,7 +69,6 @@ export const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
