@@ -3,24 +3,25 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Panel from '../components/Panel';
 import HeaderView from '../components/HeaderView';
 
-export const ReservationsScreen = () => {
+
+export default function NotificationsScreen() {
   return (
     <>
       <HeaderView />
       <ScrollView style={s.container}>
         <Text style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold', color: '#fff', marginBottom: 40 }}>
-          My Reservations
+          My Notifications
         </Text>
         <View style={{ gap: 15 }}>
-          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} state={'success'} />
-          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} state={'warning'} />
-          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} state={'danger'} />
+          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} />
+          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} />
+          <Panel tittle={'Tittle'} date={'00/00/00'} menssage={'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'} />
         </View>
       </ScrollView>
     </>
 
   );
-};
+}
 const s = StyleSheet.create({
   container: {
     flex: 1,

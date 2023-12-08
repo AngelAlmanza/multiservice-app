@@ -2,36 +2,49 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconUserCircle } from 'tabler-icons-react-native';
 import { Card } from '../components/Card';
+import HeaderView from '../components/HeaderView';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList } from '../navigation/MainStack';
+
+type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
 export const MyProfileScreen = () => {
+  const navigator = useNavigation<ScreenNavigationProps>();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>My Profile</Text>
-      <View style={styles.profileContainer}>
-        <IconUserCircle size={90}
-        />
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Text style={styles.subTitle}>Hello, </Text>
-          <Text style={{ fontSize: 18 }}>Eduardo</Text>
+    <>
+      <HeaderView />
+      <View style={styles.container}>
+        <Text style={styles.title}>My Profile</Text>
+        <View style={styles.profileContainer}>
+          <IconUserCircle size={90}
+          />
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <Text style={styles.subTitle}>Hello, </Text>
+            <Text style={{ fontSize: 18 }}>Eduardo</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.option}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Reservations</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Editar Perfil</Text>
-        </TouchableOpacity>
-      </View>
-      <Text style={styles.subTitle}>payment methods</Text>
-      <View style={styles.paymentColumn}>
-        <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
-        <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
-        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
-          <Text>Add</Text>
-        </TouchableOpacity>
-      </View>
-    </View >
+        <View style={styles.option}>
+          <TouchableOpacity style={styles.button}
+            onPress={() => { navigator.navigate('ReservationsScreen'); }}>
+            <Text style={styles.buttonText}>Reservations</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}
+            onPress={() => { navigator.navigate('EditProfileScreen'); }}>
+            <Text style={styles.buttonText}>Edit Porfile</Text>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.subTitle}>payment methods</Text>
+        <View style={styles.paymentColumn}>
+          <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
+          <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
+          <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
+            <Text>Add</Text>
+          </TouchableOpacity>
+        </View>
+      </View >
+    </>
+
   );
 };
 

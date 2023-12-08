@@ -1,20 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconBell, IconBrandTailwind, IconUser } from 'tabler-icons-react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList } from '../navigation/MainStack';
+
+type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
 export default function HeaderView() {
+  const navigator = useNavigation<ScreenNavigationProps>();
   return (
     <View style={s.container}>
-      <View style={s.subContainer}>
+      <TouchableOpacity style={s.subContainer}
+        onPress={() => { navigator.navigate('HomeScreen'); }}>
         <IconBrandTailwind size={40} />
-      </View>
-      <View style={s.subContainer}>
+      </TouchableOpacity>
+      <TouchableOpacity style={s.subContainer}
+        onPress={() => { navigator.navigate('NotificationsScreen'); }}>
         <View style={s.notification}>
           <Text style={s.alert}>5</Text>
           <IconBell size={40} />
         </View>
-        <IconUser size={40} />
-      </View>
+        <TouchableOpacity
+          onPress={() => { navigator.navigate('MyProfileScreen'); }}>
+          <IconUser size={40} />
+        </TouchableOpacity>
+      </TouchableOpacity>
     </View>
   );
 }

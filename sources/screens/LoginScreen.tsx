@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import Input from '../layouts/Input';
+import { Input } from '../components/Input';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,6 @@ export const LoginScreen = () => {
     if (email === '' || password === '') {
       Alert.alert('Error');
     } else {
-      Alert.alert('Welcome');
       setEmail('');
       setPassword('');
     }

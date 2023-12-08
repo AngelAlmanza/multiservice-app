@@ -6,6 +6,7 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { MyProfileScreen } from '../screens/MyProfileScreen';
 import { EditProfileScreen } from '../screens/EditProfileScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
 
 export type MainStackParamList = {
   SignUpScreen: undefined;
@@ -14,6 +15,7 @@ export type MainStackParamList = {
   ReservationsScreen: undefined;
   MyProfileScreen: undefined;
   EditProfileScreen: undefined;
+  NotificationsScreen: undefined;
 }
 
 const Stack = createStackNavigator<MainStackParamList>();
@@ -34,6 +36,7 @@ export const MainStack = () => {
       <Stack.Screen name="ReservationsScreen" component={ReservationsScreen} />
       <Stack.Screen name="MyProfileScreen" component={MyProfileScreen} />
       <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
     </Stack.Navigator>
   );
 };

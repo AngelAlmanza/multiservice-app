@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import InputView from '../components/InputView';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '../navigation/MainStack';
+import { Input } from '../components/Input';
 
 type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
@@ -22,7 +22,6 @@ export const SignUpScreen = () => {
     if (email === '' || password === '') {
       Alert.alert('Error');
     } else {
-      Alert.alert('Welcome');
       setEmail('');
       setPassword('');
       navigator.navigate('HomeScreen');
@@ -32,12 +31,12 @@ export const SignUpScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>tittle</Text>
-      <InputView text="Name" value={email} setValue={setEmail} />
-      <InputView text="Last name" value={email} setValue={setEmail} />
-      <InputView text="Phone" value={email} setValue={setEmail} />
-      <InputView text="Email" value={email} setValue={setEmail} />
-      <InputView text="Password" value={password} setValue={setPassword} />
-      <InputView
+      <Input text="Name" value={email} setValue={setEmail} />
+      <Input text="Last name" value={email} setValue={setEmail} />
+      <Input text="Phone" value={email} setValue={setEmail} />
+      <Input text="Email" value={email} setValue={setEmail} />
+      <Input text="Password" value={password} setValue={setPassword} />
+      <Input
         text="Confirm Password"
         value={email}
         setValue={setEmail}
