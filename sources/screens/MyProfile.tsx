@@ -1,67 +1,55 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { IconUserCircle } from 'tabler-icons-react-native';
+import Card from '../layouts/card';
 
 export default function HomePay() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mi perfil</Text>
+      <Text style={styles.title}>My Profile</Text>
       <View style={styles.profileContainer}>
-        <Image
-          source={require('multiservice-app/assets/perfil.png')}
-          style={styles.profileImage}
+        <IconUserCircle size={90}
         />
-        <Text style={styles.subTitle}>Hola, Eduardo</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Text style={styles.subTitle}>Hello, </Text>
+          <Text style={{ fontSize: 18 }}>Eduardo</Text>
+        </View>
       </View>
       <View style={styles.option}>
-        <View style={styles.column}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Reservaciones</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.column}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Editar Perfil</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Reservations</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Editar Perfil</Text>
+        </TouchableOpacity>
       </View>
-      <Text style={styles.subTitle}>Métodos de pagos</Text>
+      <Text style={styles.subTitle}>payment methods</Text>
       <View style={styles.paymentColumn}>
-        <TouchableOpacity style={styles.paymentButton}>
-          <Image
-            source={require('multiservice-app/assets/tarjeta.png')} // Reemplaza con la ruta correcta de tu imagen Visa
-            style={styles.paymentIcon}
-          />
-          <Text style={styles.paymentText}>Visa</Text>
-          <Text style={styles.paymentNumbers}>**** 1234</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.paymentButton}>
-          <Image
-            source={require('multiservice-app/assets/tarjeta.png')} // Reemplaza con la ruta correcta de tu imagen Mastercard
-            style={styles.paymentIcon}
-          />
-          <Text style={styles.paymentText}>Mastercard</Text>
-          <Text style={styles.paymentNumbers}>**** 5678</Text>
+        <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
+        <Card type={'visa'} number={'0000 0000 0000 0000'} id={1} />
+        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
+          <Text>Add</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </View >
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    alignItems: 'center',
+    // alignItems: 'center',
     padding: 20,
   },
   title: {
+    textAlign: 'center',
     fontSize: 28,
     marginBottom: 20,
   },
   profileContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    gap: 20,
   },
   profileImage: {
     width: 30,
@@ -72,58 +60,28 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: 18,
     marginBottom: 10,
+    fontWeight: 'bold',
   },
   button: {
+    flex: 1,
     backgroundColor: '#f4f4f4',
     borderRadius: 20,
-    padding: 15,
-    width: '74%', // Ancho del 70% de la pantalla
+    padding: 10,
     alignSelf: 'center',
   },
   buttonText: {
-    color: 'black',
-    fontSize: 14,
+    fontSize: 16,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
   option: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 30,
-  },
-  column: {
-    width: '46%', // Ajusta según sea necesario
-    marginLeft: 10,
-    marginRight: 10,
+    marginVertical: 20,
+    gap: 10,
   },
   paymentColumn: {
-    width: '80%', // Ancho del 80% de la pantalla
-    alignSelf: 'center',
-    marginTop: 10,
-  },
-  paymentButton: {
-    backgroundColor: '#f4f4f4',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  paymentIcon: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
-  },
-  paymentText: {
-    color: 'black',
-    fontSize: 16,
-    textAlign: 'center',
     flex: 1,
-  },
-  paymentNumbers: {
-    color: 'black',
-    fontSize: 14,
-    textAlign: 'right',
+    marginTop: 10,
+    gap: 15,
   },
 });

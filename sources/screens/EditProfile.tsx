@@ -1,55 +1,75 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { IconEdit } from 'tabler-icons-react-native';
 
 const PerfilEditar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Editar Perfil</Text>
+      <Text style={styles.title}>Edit Profile</Text>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Nombre:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu nombre"
-        />
+        <Text style={styles.label}>Name</Text>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+          <TextInput
+            style={styles.input}
+            placeholder="Name"
+          />
+          <IconEdit size={30} />
+        </View>
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Apellido:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu apellido"
-        />
+        <Text style={styles.label}>Last Name</Text>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name"
+          />
+          <IconEdit size={30} />
+        </View>
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Correo electrónico:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu correo electrónico"
-          keyboardType="email-address"
-        />
+        <Text style={styles.label}>Email</Text>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            keyboardType="email-address"
+          />
+          <IconEdit size={30} />
+        </View>
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Confirma tu correo electrónico:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Confirma tu correo electrónico"
-          keyboardType="email-address"
-        />
+        <Text style={styles.label}>Confirm Email</Text>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Email"
+            keyboardType="email-address"
+          />
+          <IconEdit size={30} />
+        </View>
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Contraseña:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa tu contraseña"
-          secureTextEntry={true}
-        />
+        <Text style={styles.label}>Password</Text>
+        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}
+          />
+          <IconEdit size={30} />
+        </View>
       </View>
 
-      <Button title="Guardar Cambios"  onPress={() => {}} />
+      <TouchableOpacity style={{ backgroundColor: '#017499', borderRadius: 10, paddingVertical: 10, marginTop: 30 }}>
+        <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: '#fff' }}>
+          Save Changes
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -70,11 +90,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   input: {
+    flex: 1,
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
     paddingHorizontal: 8,
-    borderRadius:10,
+    borderRadius: 10,
   },
 });
 
