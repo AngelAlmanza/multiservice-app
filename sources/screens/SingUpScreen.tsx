@@ -6,27 +6,41 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import InputComponent from '../components/InputView';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList } from '../navigation/MainStack';
+import { Input } from '../components/Input';
 
-export default function LoginView() {
+type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
+
+export const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigator = useNavigation<ScreenNavigationProps>();
+
   const handleLogin = () => {
     if (email === '' || password === '') {
       Alert.alert('Error');
     } else {
-      Alert.alert('Welcome');
       setEmail('');
       setPassword('');
+      navigator.navigate('HomeScreen');
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>tittle</Text>
-      <InputComponent text="Email" value={email} setValue={setEmail} />
-      <InputComponent text="Password" value={password} setValue={setPassword} />
-
+      <Input text="Name" value={email} setValue={setEmail} />
+      <Input text="Last name" value={email} setValue={setEmail} />
+      <Input text="Phone" value={email} setValue={setEmail} />
+      <Input text="Email" value={email} setValue={setEmail} />
+      <Input text="Password" value={password} setValue={setPassword} />
+      <Input
+        text="Confirm Password"
+        value={email}
+        setValue={setEmail}
+      />
       <TouchableOpacity
         style={styles.button}
         // onPress={() => navigation.navigate('SignUp')}
@@ -36,13 +50,14 @@ export default function LoginView() {
       </TouchableOpacity>
       <TouchableOpacity
         // onPress={() => navigation.navigate('SignUp')}
-        onPress={() => Alert.alert('Hello')}
+        onPress={() => navigator.navigate('LoginScreen')}
       >
-        <Text style={styles.link}>You don't have an account? Sign up</Text>
+        <Text style={styles.link}>do you have an account? Login</Text>
       </TouchableOpacity>
+      {/* + */}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +65,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
   },
   title: {
     fontSize: 24,
@@ -61,7 +75,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     width: '80%',
-    marginTop: 20,
   },
   buttonText: {
     color: 'white',

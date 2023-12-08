@@ -1,20 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { IconCash, IconChevronDown, IconCreditCard } from 'tabler-icons-react-native';
+import { IconCash } from 'tabler-icons-react-native';
+import { CardsList } from './CardsList';
 
 export default function PayMethod() {
+  const cards = [{ type: 'visa', cardNumber: '0000 0000 0000 1234' },
+  { type: 'mastercard', cardNumber: '0000 0000 0000 9876' },
+  { type: 'visa', cardNumber: '0000 0000 0000 4563' }];
   return (
     <View style={{ gap: 15, paddingVertical: 20 }}>
       <TouchableOpacity style={s.method}>
         <IconCash size={45} />
         <Text style={{ fontSize: 20, paddingTop: 8, marginStart: 30 }}>Cash</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity style={s.method}>
-        <IconCreditCard size={45} />
-        <Text style={{ fontSize: 20, paddingTop: 5, marginHorizontal: 30 }}>Card</Text>
-        <IconChevronDown style={{ marginTop: 10 }} />
-      </TouchableOpacity>
+      <CardsList data={cards} />
     </View>
   );
 }

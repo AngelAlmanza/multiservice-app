@@ -22,7 +22,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
     "react-native-week-view": "^0.30.0",
-    "tabler-icons-react-native": "^2.42.1"
+    "tabler-icons-react-native": "^2.42.1",
+    "react-native-gesture-handler": "~2.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

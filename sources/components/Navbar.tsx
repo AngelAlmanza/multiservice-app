@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { IconSmartHome } from 'tabler-icons-react-native';
 
