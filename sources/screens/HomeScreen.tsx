@@ -3,7 +3,7 @@ import { Text, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-nati
 import { DropdownList } from '../components/DropdownList';
 import PayMethods from '../components/PayMethods';
 import CalendarView from '../components/CalendarView';
-import InputView from '../components/InputView';
+import { Input } from '../components/Input';
 
 export const HomeScreen = () => {
   const services = ['option1', 'option2', 'option3', 'option4'];
@@ -12,8 +12,8 @@ export const HomeScreen = () => {
       <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>Request Service</Text>
       <DropdownList data={services} tittle="Services" />
       <CalendarView />
-      <InputView text="Name" />
-      <InputView text="Last name" />
+      <Input text="Name" />
+      <Input text="Last name" />
       <PayMethods />
       <View style={{ display: 'flex', flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Total: $</Text>

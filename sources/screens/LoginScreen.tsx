@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import InputComponent from '../components/InputView';
+import Input from '../layouts/Input';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -24,8 +24,8 @@ export const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>tittle</Text>
-      <InputComponent text="Email" value={email} setValue={setEmail} />
-      <InputComponent text="Password" value={password} setValue={setPassword} />
+      <Input text="Email" value={email} setValue={setEmail} />
+      <Input text="Password" value={password} setValue={setPassword} />
 
       <TouchableOpacity
         style={styles.button}

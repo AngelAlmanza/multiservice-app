@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
@@ -8,7 +8,7 @@ interface InputProps {
   setValue?: Dispatch<SetStateAction<string>>;
 }
 
-export default function InputComponent({ text, value, setValue }: InputProps) {
+export const Input = ({ text, value, setValue }: InputProps) => {
   return (
     <View style={styles.containerInput}>
       <TextInput
@@ -19,7 +19,7 @@ export default function InputComponent({ text, value, setValue }: InputProps) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   containerInput: {
