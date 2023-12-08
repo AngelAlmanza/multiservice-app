@@ -48,5 +48,6 @@ const s = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     zIndex: +1,
+    fontSize: 12,
   },
 });

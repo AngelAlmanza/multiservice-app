@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, ScrollView } from 'react-native';
+import { Text, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
 import DropdownList from '../components/DropdownList';
 import PayMethods from '../components/PayMethods';
 import CalendarView from '../components/CalendarView';
@@ -17,6 +17,15 @@ export default function HomeScreen() {
       <InputView text="Name" />
       <InputView text="Last name" />
       <PayMethods />
+      <View style={{ display: 'flex', flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Total: $</Text>
+        <Text>0000</Text>
+      </View>
+      <TouchableOpacity style={styles.reserve}>
+        <Text style={{ fontSize: 20, color: '#fff' }}>
+          Reserve
+        </Text>
+      </TouchableOpacity>
 
     </ScrollView>
   );
@@ -26,5 +35,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     width: '100%',
+  },
+  reserve: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 30,
+    paddingVertical: 10,
+    backgroundColor: '#017499',
+    borderRadius: 8,
   },
 });
