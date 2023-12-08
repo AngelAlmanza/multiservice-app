@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconUserCircle } from 'tabler-icons-react-native';
-import Card from '../layouts/card';
+import { Card } from '../components/Card';
 
-export default function HomePay() {
+export const MyProfileScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Profile</Text>
@@ -33,7 +33,7 @@ export default function HomePay() {
       </View>
     </View >
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

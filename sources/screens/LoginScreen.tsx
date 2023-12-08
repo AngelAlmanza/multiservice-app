@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import InputView from '../components/InputView';
+import InputComponent from '../components/InputView';
 
-export default function LoginView() {
+export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = () => {
@@ -24,16 +24,9 @@ export default function LoginView() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>tittle</Text>
-      <InputView text="Name" value={email} setValue={setEmail} />
-      <InputView text="Last name" value={email} setValue={setEmail} />
-      <InputView text="Phone" value={email} setValue={setEmail} />
-      <InputView text="Email" value={email} setValue={setEmail} />
-      <InputView text="Password" value={password} setValue={setPassword} />
-      <InputView
-        text="Confirm Password"
-        value={email}
-        setValue={setEmail}
-      />
+      <InputComponent text="Email" value={email} setValue={setEmail} />
+      <InputComponent text="Password" value={password} setValue={setPassword} />
+
       <TouchableOpacity
         style={styles.button}
         // onPress={() => navigation.navigate('SignUp')}
@@ -45,12 +38,11 @@ export default function LoginView() {
         // onPress={() => navigation.navigate('SignUp')}
         onPress={() => Alert.alert('Hello')}
       >
-        <Text style={styles.link}>do you have an account? Login</Text>
+        <Text style={styles.link}>You don't have an account? Sign up</Text>
       </TouchableOpacity>
-      +
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -58,6 +50,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 24,
@@ -68,6 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     width: '80%',
+    marginTop: 20,
   },
   buttonText: {
     color: 'white',

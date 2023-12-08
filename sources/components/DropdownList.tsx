@@ -9,7 +9,7 @@ interface dataProp {
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-export default function DropdownList({ data, tittle }: dataProp) {
+export const DropdownList = ({ data, tittle }: dataProp) => {
   const [deploy, setDeploy] = useState(false);
   const heightAnim = useRef(new Animated.Value(0)).current; // Valor inicial de altura
 
@@ -57,7 +57,7 @@ export default function DropdownList({ data, tittle }: dataProp) {
       </View>
     </View>
   );
-}
+};
 
 const s = StyleSheet.create({
   dropdownLabel: {

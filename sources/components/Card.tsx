@@ -1,13 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import { IconBrandMastercard, IconBrandVisa } from 'tabler-icons-react-native';
-interface cardProps {
+
+interface Props {
   id: number;
   type: string;
   number: string;
 }
 
-export default function Card({ type, number, id }: cardProps) {
+export const Card = ({ type, number, id }: Props) => {
   return (
     <TouchableOpacity key={id} style={s.method}>
       <View style={{ display: 'flex', flex: 1, flexDirection: 'row' }}>
@@ -21,14 +22,14 @@ export default function Card({ type, number, id }: cardProps) {
         </Text>
       </View>
       <Text>
-        {number.slice(
-          number.length - 4,
-          number.length,
-        )}
+        {
+          number.slice(number.length - 4, number.length)
+        }
       </Text>
     </TouchableOpacity>
   );
-}
+};
+
 const s = StyleSheet.create({
   method: {
     paddingHorizontal: 30,

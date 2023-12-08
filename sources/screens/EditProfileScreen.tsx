@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconEdit } from 'tabler-icons-react-native';
 
-const PerfilEditar = () => {
+export const EditProfileScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Edit Profile</Text>
@@ -98,5 +98,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
-export default PerfilEditar;

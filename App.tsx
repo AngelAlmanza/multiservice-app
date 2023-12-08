@@ -1,25 +1,12 @@
-
-
-// import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-// import Home from './sources/screens/Home';
-import HeaderView from './sources/components/HeaderView';
-// import Reservations from './sources/screens/Reservations';
+import { NavigationContainer } from '@react-navigation/native';
+import { MainStack } from './sources/navigation/MainStack';
 
 export default function App() {
   return (
-    <SafeAreaView style={s.container}>
-      <HeaderView />
-      {/* <Reservations /> */}
-    </SafeAreaView>
-
+    <NavigationContainer>
+      <MainStack />
+    </NavigationContainer>
   );
 }
-
-const s = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

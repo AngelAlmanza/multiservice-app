@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconCash } from 'tabler-icons-react-native';
-import CardsList from './CardsList';
+import { CardsList } from './CardsList';
 
 export default function PayMethod() {
   const cards = [{ type: 'visa', cardNumber: '0000 0000 0000 1234' },

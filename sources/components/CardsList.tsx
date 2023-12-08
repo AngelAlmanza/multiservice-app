@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import Card from '../layouts/card';
+import { Card } from './Card';
 import { IconCreditCard, IconChevronUp, IconChevronDown } from 'tabler-icons-react-native';
 
-interface dataProp {
-  data: {
-    type: string,
-    cardNumber: string
-  }[],
+type Data = {
+  type: string,
+  cardNumber: string
+};
+
+interface Props {
+  data: Data[],
 }
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-export default function DropdownList({ data }: dataProp) {
+export const CardsList = ({ data }: Props) => {
   const [deploy, setDeploy] = useState(false);
   const heightAnim = useRef(new Animated.Value(0)).current; // Valor inicial de altura
 
@@ -54,7 +56,7 @@ export default function DropdownList({ data }: dataProp) {
 
     </View >
   );
-}
+};
 
 const s = StyleSheet.create({
   method: {

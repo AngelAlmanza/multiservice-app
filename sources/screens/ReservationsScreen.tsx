@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function Reservations() {
+export const ReservationsScreen = () => {
   return (
     <View>
       <Text>
@@ -9,4 +9,4 @@ export default function Reservations() {
       </Text>
     </View>
   );
-}
+};
