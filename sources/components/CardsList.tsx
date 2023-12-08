@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import Card from '../layouts/card';
+import Card from '../layouts/Card';
 import { IconCreditCard, IconChevronUp, IconChevronDown } from 'tabler-icons-react-native';
 
 interface dataProp {

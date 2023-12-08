@@ -4,15 +4,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import Home from './sources/screens/Home';
 import HeaderView from './sources/components/HeaderView';
-// import Reservations from './sources/screens/Reservations';
+import CalendarView from './sources/components/CalendarView';
 
 export default function App() {
   return (
     <SafeAreaView style={s.container}>
       <HeaderView />
-      {/* <Reservations /> */}
+      <CalendarView />
     </SafeAreaView>
 
   );

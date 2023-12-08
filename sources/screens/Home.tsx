@@ -3,7 +3,7 @@ import { Text, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-nati
 import DropdownList from '../components/DropdownList';
 import PayMethods from '../components/PayMethods';
 import CalendarView from '../components/CalendarView';
-import InputView from '../components/InputView';
+import InputView from '../layouts/Input';
 // import CalendarView from '../components/CalendarView';
 
 export default function HomeScreen() {

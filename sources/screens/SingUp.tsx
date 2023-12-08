@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import InputView from '../components/InputView';
+import Input from '../layouts/Input';
 
 export default function LoginView() {
   const [email, setEmail] = useState('');
@@ -24,12 +24,12 @@ export default function LoginView() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>tittle</Text>
-      <InputView text="Name" value={email} setValue={setEmail} />
-      <InputView text="Last name" value={email} setValue={setEmail} />
-      <InputView text="Phone" value={email} setValue={setEmail} />
-      <InputView text="Email" value={email} setValue={setEmail} />
-      <InputView text="Password" value={password} setValue={setPassword} />
-      <InputView
+      <Input text="Name" value={email} setValue={setEmail} />
+      <Input text="Last name" value={email} setValue={setEmail} />
+      <Input text="Phone" value={email} setValue={setEmail} />
+      <Input text="Email" value={email} setValue={setEmail} />
+      <Input text="Password" value={password} setValue={setPassword} />
+      <Input
         text="Confirm Password"
         value={email}
         setValue={setEmail}
@@ -47,7 +47,6 @@ export default function LoginView() {
       >
         <Text style={styles.link}>do you have an account? Login</Text>
       </TouchableOpacity>
-      +
     </View>
   );
 }
