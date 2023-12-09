@@ -4,14 +4,14 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '../navigation/MainStack';
 import { Input } from '../components/Input';
-import { IconBrandTailwind } from 'tabler-icons-react-native';
+import multiservceApi from '../api/multiservice-api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
@@ -23,34 +23,37 @@ export const SignUpScreen = () => {
   const [password, setPassword] = useState('');
   const navigator = useNavigation<ScreenNavigationProps>();
 
-  const handleLogin = () => {
-    if (email === '' || password === '') {
-      Alert.alert('Error');
-    } else {
-      setEmail('');
-      setPassword('');
-      setName('');
-      setPhone('');
-      setLastName('');
+  const handleLogin = async () => {
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('name', name);
+    formData.append('last_name', lastName);
+    formData.append('phone', phone);
+    try {
+      const response = await multiservceApi.post('clients/store', formData);
+      const userID = response.data.id;
+      await AsyncStorage.setItem('userID', userID.toString());
       navigator.navigate('HomeScreen');
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        <IconBrandTailwind size={90} />
-      </Text>
-
-      <Input text="Name" value={email} setValue={setEmail} />
-      <Input text="Last name" value={email} setValue={setEmail} />
-      <Input text="Phone" value={email} setValue={setEmail} />
+      <Image source={require('../../assets/logo.png')} style={styles.logoImg} />
+      <Text style={styles.title}>Sign Up!</Text>
+      <Input text="Name" value={name} setValue={setName} />
+      <Input text="Last name" value={lastName} setValue={setLastName} />
+      <Input text="Phone" value={phone} setValue={setPhone} />
       <Input text="Email" value={email} setValue={setEmail} />
-      <Input text="Password" value={password} setValue={setPassword} />
+      <Input text="Password" value={password} setValue={setPassword} hidden />
       <Input
         text="Confirm Password"
-        value={email}
-        setValue={setEmail}
+        value={password}
+        setValue={setPassword}
+        hidden
       />
       <TouchableOpacity
         style={styles.button}
@@ -82,9 +85,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#007AFF',
     borderRadius: 5,
-    marginTop: 20,
     padding: 10,
     width: '80%',
+  },
+  logoImg: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   buttonText: {
     color: 'white',

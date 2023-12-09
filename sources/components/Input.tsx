@@ -6,9 +6,10 @@ interface InputProps {
   text: string;
   value?: string;
   setValue?: Dispatch<SetStateAction<string>>;
+  hidden?: boolean;
 }
 
-export const Input = ({ text, value, setValue }: InputProps) => {
+export const Input = ({ text, value, setValue, hidden }: InputProps) => {
   return (
     <View style={styles.containerInput}>
       <TextInput
@@ -16,6 +17,7 @@ export const Input = ({ text, value, setValue }: InputProps) => {
         placeholder={text}
         value={value}
         onChangeText={setValue}
+        secureTextEntry={hidden}
       />
     </View>
   );

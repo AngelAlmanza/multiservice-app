@@ -4,16 +4,15 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   Image,
 } from 'react-native';
 import { Input } from '../components/Input';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '../navigation/MainStack';
-import { IconBrandTailwind } from 'tabler-icons-react-native';
 import { loginProps } from '../../interface/user';
 import multiservceApi from '../api/multiservice-api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ScreenNavigationProps = StackNavigationProp<MainStackParamList>
 
@@ -25,29 +24,27 @@ export const LoginScreen = () => {
   const [password, setPassword] = useState('');
   // const [token, setToken] = useState(null);
 
+
   const handleLogin = async () => {
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
     try {
-      const response = await multiservceApi.post<loginProps>('/clients/login', {
-        email: email,
-        password: password,
-      });
-      Alert.alert('calando ');
-
+      const response = await multiservceApi.post<loginProps>('/login', formData);
+      const userID = response.data.id;
+      await AsyncStorage.setItem('userID', userID.toString());
+      navigator.navigate('HomeScreen');
+      console.log(userID);
     } catch (error) {
-
+      console.log(error);
     }
-    // multiservceApi
   };
-
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        <IconBrandTailwind size={100} />
-      </Text>
+      <Image source={require('../../assets/logo.png')} style={styles.logoImg} />
       <Input text="Email" value={email} setValue={setEmail} />
-      <Input text="Password" value={password} setValue={setPassword} />
-
+      <Input text="Password" value={password} setValue={setPassword} hidden />
       <TouchableOpacity
         style={styles.button}
         // onPress={() => navigation.navigate('SignUp')}
@@ -60,9 +57,6 @@ export const LoginScreen = () => {
       >
         <Text style={styles.link}>You don't have an account? Sign up</Text>
       </TouchableOpacity>
-      <Text>
-        {email}
-      </Text>
     </View>
   );
 };
