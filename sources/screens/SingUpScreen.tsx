@@ -21,10 +21,20 @@ export const SignUpScreen = () => {
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [errorChecker, setErrorChecker] = useState('');
   const navigator = useNavigation<ScreenNavigationProps>();
 
   const handleLogin = async () => {
     const formData = new FormData();
+
+    if (!email || !password || !email.trim() || !password.trim()) {
+      return setErrorChecker('Please fill all the fields');
+    }
+
+    if (!email.includes('@')) {
+      return setErrorChecker('Please enter a valid email');
+    }
+
     formData.append('email', email);
     formData.append('password', password);
     formData.append('name', name);
@@ -36,7 +46,7 @@ export const SignUpScreen = () => {
       await AsyncStorage.setItem('userID', userID.toString());
       navigator.navigate('HomeScreen');
     } catch (error) {
-      console.log(error);
+      return setErrorChecker(error.response.data.message);
     }
   };
 
@@ -44,6 +54,7 @@ export const SignUpScreen = () => {
     <View style={styles.container}>
       <Image source={require('../../assets/logo.png')} style={styles.logoImg} />
       <Text style={styles.title}>Sign Up!</Text>
+      <Text style={styles.error}>{errorChecker}</Text>
       <Input text="Name" value={name} setValue={setName} />
       <Input text="Last name" value={lastName} setValue={setLastName} />
       <Input text="Phone" value={phone} setValue={setPhone} />
@@ -59,7 +70,7 @@ export const SignUpScreen = () => {
         style={styles.button}
         onPress={handleLogin}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -101,5 +112,10 @@ const styles = StyleSheet.create({
   link: {
     color: '#007AFF',
     marginTop: 20,
+  },
+  error: {
+    color: 'red',
+    marginBottom: 20,
+    fontStyle: 'italic',
   },
 });

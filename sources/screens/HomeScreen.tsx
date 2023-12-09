@@ -9,7 +9,6 @@ import HeaderView from '../components/HeaderView';
 export const HomeScreen = () => {
   const services = ['option1', 'option2', 'option3', 'option4'];
   return (
-
     <>
       <HeaderView />
       <ScrollView style={styles.container}>
